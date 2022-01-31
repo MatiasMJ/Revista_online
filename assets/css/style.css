@@ -1,0 +1,357 @@
+@charset "UTF-8";
+/*
+
+  Con este reset vamos a resolver:
+    👉 Unificar el uso de Custom Properties
+    👉 Problemas de box-model más generales
+    👉 Problemas con imagenes, vídeos e iconos svg
+    👉 Problemas con tipografías y etiquetas input en formularios
+    👉 Unificar la tipografía de todas las etiquetas de una web
+*/
+/* Aquí definimos las Custom properties */
+:root {
+  --color-primario: #181818;
+  --color-secundario: #f0f0f0;
+  /* Tipografía */
+  --tipo-principal: Helvetica, Arial, sans-serif;
+  --tipo-secundaria: Verdana;
+}
+
+/* Las adaptamos al modo oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primario: #f0f0f0;
+    --color-secundario: #181818;
+  }
+}
+/* Opcional */
+/* Configuramos si un usuario ha activado el modo alto contraste. (WD) */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primario: black;
+    --color-secundario: white;
+  }
+}
+/* Opcional */
+/* Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none;
+    transition: none;
+  }
+}
+/* Reseteamos los margin y paddings de todas las etiquetas */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+/* Evitamos problemas con las imagenes */
+img, picture, video, iframe, figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  /* opcional */
+  object-fit: cover;
+  /* opcional */
+  object-position: center center;
+}
+
+/* Reseteamos los enlaces para funcionar como cajas... */
+a {
+  display: block;
+}
+
+/* ... excepto los que se encuentran en párrafos */
+p a {
+  display: inline;
+}
+
+/* Quitamos los puntos de los <li> */
+li {
+  list-style-type: none;
+}
+
+/* Configuramos anclas suaves */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Desactivamos estilos por defecto de las principales etiquetas de texto */
+h1, h2, h3, h4, h5, h6, p, span, a, strong, blockquote, i, b, u, em {
+  font-size: 1em;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* Configuramos el texto que seleccionamos */
+::selection {
+  background-color: var(--color-primario);
+  color: var(--color-secundario);
+}
+
+/* Nivelamos problemas de tipografías y colocación de formularios */
+form, input, textarea, select, button, label {
+  font-family: inherit;
+  font-size: inherit;
+  hyphens: auto;
+  background-color: transparent;
+  display: block;
+  color: inherit;
+  /* opcional */
+  appearance: none;
+}
+
+/* Reseteamos las tablas */
+table, tr, td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Evitamos problemas con los SVG */
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+/* Configuramos la tipografía para toda la web */
+body {
+  min-height: 100vh;
+  font-size: 100%;
+  font-family: var(--tipo-principal);
+  color: var(--color-primario);
+  background-color: var(--color-secundario);
+  /* opcional */
+  line-height: 1.4em;
+  /* opcional */
+  hyphens: auto;
+  /* opcional */
+  font-smooth: always;
+  /* opcional */
+  -webkit-font-smoothing: antialiased;
+  /* opcional */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "Newsreader", serif;
+}
+
+.menu {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid gray;
+  display: flex;
+}
+.menu__logo {
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 0;
+}
+.menu__nav {
+  width: 100vw;
+  padding: 10px 0;
+  position: relative;
+}
+.menu__nav ul {
+  list-style-type: none;
+  overflow: hidden;
+  font-size: 16px;
+}
+@media only screen and (max-width: 600px) {
+  .menu__nav ul {
+    font-size: 11px;
+  }
+}
+.menu__nav li {
+  float: right;
+}
+.menu__nav li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  margin: 0 20px;
+  display: block;
+  text-align: center;
+}
+.menu__input-menu {
+  border-radius: 30px;
+  border: 1px solid gray;
+  height: 25px;
+  padding: 5px 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .not-see {
+    display: none;
+  }
+}
+
+.contenedor {
+  background-color: #fff;
+}
+
+.content {
+  display: grid;
+  width: 90%;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 20px;
+  margin: 20px auto;
+}
+@media only screen and (max-width: 600px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
+.content__news-list {
+  grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  grid-gap: 20px;
+  margin: 20px;
+}
+@media only screen and (max-width: 600px) {
+  .content__news-list {
+    grid-template-columns: 1fr;
+    margin: 0;
+  }
+}
+.content__news-list img {
+  height: 450px;
+}
+@media only screen and (max-width: 600px) {
+  .content__news-list img {
+    height: 200px;
+  }
+}
+.content__news {
+  grid-template-columns: 1;
+  height: 350px;
+}
+@media only screen and (max-width: 600px) {
+  .content__news {
+    height: 300px;
+  }
+}
+.content__news h2 {
+  font-weight: 700;
+  font-size: 20px;
+}
+.content__news p {
+  font-size: 16px;
+}
+
+.aside {
+  padding: 30px;
+}
+@media only screen and (max-width: 600px) {
+  .aside {
+    display: none;
+  }
+}
+.aside__about {
+  border-bottom: 1px solid gray;
+  padding-bottom: 20px;
+}
+.aside__about h2 {
+  font-weight: 700;
+  font-size: 20px;
+}
+.aside__about p {
+  font-size: 16px;
+}
+.aside__tags li {
+  background-color: #38388a;
+  width: 80px;
+  float: left;
+  margin: 0 5px;
+  text-align: center;
+  color: #ffff;
+  align-self: center;
+}
+.aside__tags h2 {
+  font-weight: 700;
+  font-size: 20px;
+  padding: 10px 0;
+}
+.aside__tags {
+  list-style-type: none;
+  overflow: hidden;
+  margin: 20px 0;
+}
+.aside__outstanding {
+  border-top: 1px solid gray;
+  padding: 20px 0;
+}
+.aside__outstanding h2 {
+  font-weight: 700;
+  font-size: 20px;
+  padding: 10px 0;
+}
+.aside__outstanding h4 {
+  font-weight: 700;
+  font-size: 18px;
+  padding: 10px 0;
+}
+.aside__outstanding img {
+  padding: 0 0 10px 0;
+}
+
+.newsletter {
+  background-color: #f2f4f5;
+  text-align: center;
+  height: 300px;
+  padding: 10vh 0;
+}
+.newsletter__input {
+  height: 30px;
+  margin-top: 10px;
+  display: inline-flex;
+  background-color: #fff;
+}
+.newsletter__input button {
+  border-width: 0;
+  font-size: 13px;
+  border-width: 0;
+  width: 100px;
+  background-color: #ff7f50;
+  color: #ffff;
+}
+
+.newsletter h2 {
+  font-size: 30px;
+  font-weight: 700;
+  padding: 10px 0;
+}
+
+.newsletter p {
+  font-size: fz-medium;
+}
+@media only screen and (max-width: 600px) {
+  .newsletter p {
+    font-size: fz-smmall;
+  }
+}
+
+.footer {
+  text-align: center;
+  height: 40px;
+  font-weight: 700;
+}
+
+.footer p {
+  padding-top: 10px;
+}
+
+/*# sourceMappingURL=style.css.map */

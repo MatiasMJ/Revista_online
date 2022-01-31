@@ -1,0 +1,39 @@
+.newsletter {
+  background-color: #f2f4f5;
+  text-align: center;
+  height: 300px;
+  padding: 10vh 0;
+
+  &__input {
+    height: 30px;
+    margin-top: 10px;
+    display: inline-flex;
+    background-color: #fff;
+  }
+
+  &__input button {
+    border-width: 0;
+    font-size: 13px;
+    border-width: 0;
+    width: 100px;
+    background-color: #ff7f50;
+    color: #ffff;
+  }
+}
+
+.newsletter h2{
+    font-size: $fz-xx-large;
+    font-weight: 700;
+    padding: 10px 0;
+
+}
+
+.newsletter p {
+    font-size: fz-medium;
+
+    @media only screen and (max-width: 600px) {
+      font-size: fz-smmall;
+  }
+    
+
+}
